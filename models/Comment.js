@@ -18,14 +18,21 @@ Comment.init({
             key: 'id'
         }
     },
-    body: {
+    blog_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'blog',
+            key: 'id'
+        }
+    },
+    text: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
-    date: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW
-    },
+        allowNull: false,
+        validate: {
+            len: [1]
+        }
+    }
 }, {
     sequelize,
     freezeTableName: true,
